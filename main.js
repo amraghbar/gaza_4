@@ -2,12 +2,10 @@ const tasks = loadTasks();
 let isRunning = true;
 let taskIndex;
 
-// دالة لحفظ المهام إلى localStorage
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-// دالة لتحميل المهام من localStorage
 function loadTasks() {
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks ? JSON.parse(storedTasks) : [];
@@ -29,7 +27,7 @@ while (isRunning) {
             let newTask = prompt("Enter The Task");
             tasks.push({ task: newTask, completed: false });
             console.log("Task Added");
-            saveTasks(); // حفظ المهام بعد الإضافة
+            saveTasks(); 
             break;
 
         case 2:
@@ -62,7 +60,7 @@ while (isRunning) {
             if (tasks[taskIndex]) {
                 tasks[taskIndex].task = prompt("Enter the new task");
                 console.log("Task edited");
-                saveTasks(); // حفظ المهام بعد التعديل
+                saveTasks(); 
             } else {
                 console.log("Invalid task Number");
             }
@@ -73,7 +71,7 @@ while (isRunning) {
             if (tasks[taskIndex]) {
                 tasks.splice(taskIndex, 1);
                 console.log("Task deleted");
-                saveTasks(); // حفظ المهام بعد الحذف
+                saveTasks(); 
             } else {
                 console.log("Invalid task Number");
             }
@@ -107,4 +105,3 @@ while (isRunning) {
             break;
     }
 }
-س
