@@ -1,6 +1,5 @@
-const tasks = loadTasks();
-let isRunning = true;
-let taskId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
+let tasks = loadTasks();
+let taskId = tasks.length > 0 ? Math.max(...tasks.map(task => task.id || 0)) + 1 : 1; // تعيين ID بناءً على أعلى قيمة موجودة أو البدء من 1
 
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -10,6 +9,8 @@ function loadTasks() {
     const storedTasks = localStorage.getItem("tasks");
     return storedTasks ? JSON.parse(storedTasks) : [];
 }
+
+let isRunning = true;
 
 while (isRunning) {
     console.log(`Task Manager Menu:
